@@ -4,15 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\JawabanModel;
+use App\PertanyaanModel;
 
 class JawabanController extends Controller
 {
     public function index($id)
     {
-        $data = JawabanModel::get_all_jawaban($id);
+        $datajawaban = JawabanModel::get_all_jawaban($id);
+        $datapertanyaan = PertanyaanModel::get_pertanyaan_by_id($id);
         $row_jawaban = $id;
         // dd($row_jawaban);
-        return view('jawabancreate', compact('data','row_jawaban'));
+        return view('jawabancreate', compact('datapertanyaan','datajawaban','row_jawaban'));
     }
     public function create()
     {

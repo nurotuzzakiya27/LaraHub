@@ -3,22 +3,25 @@
 @section('content')
 <div class="card">
       <div class="card-header">
-        <h3 class="card-title">Buat Pertanyaan Baru</h3>
+        <h3 class="card-title">Edit Pertanyaan</h3>
       </div>
       <!-- /.card-header -->
       <div class="card-body">
-         <form role="form" action="/pertanyaan" method="POST">
+          @foreach($datapertanyaan as $data)
+         <form role="form" action="/pertanyaan/{{ $data->id }}" method="POST">
             {!! csrf_field() !!}
+            {!! method_field('PUT') !!}
             <div class="card-body">
               <div class="form-group">
                 <label for="judul">Judul</label>
-                <input type="text" class="form-control" id="judul" name="judul" placeholder="Masukkan Judul Pertanyaan">
+                <input type="text" class="form-control" id="judul" name="judul" value="{{ $data->judul }}" placeholder="Masukkan Judul Pertanyaan">
               </div>
               <div class="form-group">
                 <label for="isi">Isi</label>
-                <input type="text" class="form-control" id="isi" name="isi" height="100" placeholder="Masukkan Isi Pertanyaan">
+                <input type="text" class="form-control" id="isi" name="isi" value="{{ $data->isi }}" height="100" placeholder="Masukkan Isi Pertanyaan">
               </div>
             </div>
+            @endforeach
             <!-- /.card-body -->
 
             <div class="card-footer">

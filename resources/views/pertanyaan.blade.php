@@ -3,17 +3,20 @@
 @section('content')
 <div class="card">
       <div class="card-header">
-        <h3 class="card-title">DataTable with default features</h3>
+        <h3 class="card-title">Daftar Pertanyaan</h3>
       </div>
+
+              
       <!-- /.card-header -->
       <div class="card-body">
+        <a href="/pertanyaan/create" class="btn btn-info">Tambah Pertanyaan</a>
         <table id="example1" class="table table-bordered table-striped">
           <thead>
           <tr>
             <th>No</th>
             <th>Judul</th>
             <th>Isi</th>
-            <th>Jawaban</th>
+            <th width="40%">Actions</th>
           </tr>
           </thead>
           <tbody>
@@ -22,9 +25,12 @@
             <td> {{ $key + 1 }}</td>
             <td> {{ $row->judul }} </td>
             <td> {{ $row->isi }} </td>
-            <form action="/jawaban/{{ $row->id }}" method="GET">
-              <td><button type="submit" class="btn btn-primary">Jawaban</button></td>
-            </form>
+            <td>
+              <a href="/pertanyaan/{{ $row->id }}"  class="btn btn-primary">Detail</a>
+              <a href="/pertanyaan/{{ $row->id }}/edit"  class="btn btn-success">Edit</a>
+              <a href="/jawaban/{{ $row->id }}"  class="btn btn-warning">Tambah Jawaban</a>
+              <a href="/pertanyaan/{{ $row->id }}/delete"  class="btn btn-danger">Delete</a>
+            </td>
           </tr>
           @endforeach
           </tfoot>
